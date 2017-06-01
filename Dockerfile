@@ -6,6 +6,6 @@ RUN apt-get install bzip2 -y && wget https://nchc.dl.sourceforge.net/project/boo
 tar -jxf /tmp/boost_1_49_0.tar.bz2 -C /opt
 WORKDIR /opt/openssl
 RUN git checkout OpenSSL_1_0_1c && ./config && make
-WORKDIR /opt/boost_1_49_0 
-RUN ./bootstrap.sh && ./b2 && ln -s /opt/boost_1_49_0/stage/lib /opt/boost_1_49_0/stage/lib/debian
+#WORKDIR /opt/boost_1_49_0 
+#RUN ./bootstrap.sh && ./b2 && ln -s /opt/boost_1_49_0/stage/lib /opt/boost_1_49_0/stage/lib/debian
 VOLUME /opt
