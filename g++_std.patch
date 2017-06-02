@@ -1,0 +1,88 @@
+Index: tdclient/libs/netlib/project/android/netlib/jni/Application.mk
+===================================================================
+--- tdclient/libs/netlib/project/android/netlib/jni/Application.mk	(revision 14850)
++++ tdclient/libs/netlib/project/android/netlib/jni/Application.mk	(working copy)
+@@ -1,6 +1,6 @@
+ APP_PLATFORM := android-13
+ APP_ABI := x86
+-APP_CPPFLAGS += -std=c++11
++APP_CPPFLAGS += -std=c++0x
+ APP_STL := gnustl_shared
+ APP_PROJECT_PATH := ./
+ APP_MODULES := libnet
+Index: tdclient/libs/netlib/project/linux/Makefile
+===================================================================
+--- tdclient/libs/netlib/project/linux/Makefile	(revision 14850)
++++ tdclient/libs/netlib/project/linux/Makefile	(working copy)
+@@ -25,7 +25,7 @@
+ 	-I$(SOURCE_ROOT_DIR)/3rd-party/openssl/include \
+ 	-I$(SOURCE_ROOT_DIR)/3rd-party/protobuf/include
+ 
+-CXXFLAGS += -std=c++11
++CXXFLAGS += -std=c++0x
+ 
+ ifneq ($(DEBUG), )
+ CXXFLAGS        += -g
+Index: tdclient/libs/updatelib/project/android/updatelib/jni/Application.mk
+===================================================================
+--- tdclient/libs/updatelib/project/android/updatelib/jni/Application.mk	(revision 14850)
++++ tdclient/libs/updatelib/project/android/updatelib/jni/Application.mk	(working copy)
+@@ -1,6 +1,6 @@
+ APP_PLATFORM := android-13
+ APP_ABI := x86
+-APP_CPPFLAGS += -std=c++11
++APP_CPPFLAGS += -std=c++0x
+ APP_STL := gnustl_shared
+ APP_PROJECT_PATH := ./
+ APP_MODULES := libupdate
+Index: tdclient/libs/updatelib/project/android/updatelib-ft/jni/Application.mk
+===================================================================
+--- tdclient/libs/updatelib/project/android/updatelib-ft/jni/Application.mk	(revision 14850)
++++ tdclient/libs/updatelib/project/android/updatelib-ft/jni/Application.mk	(working copy)
+@@ -1,6 +1,6 @@
+ APP_PLATFORM := android-13
+ APP_ABI := x86
+-APP_CPPFLAGS += -std=c++11
++APP_CPPFLAGS += -std=c++0x
+ APP_STL := gnustl_shared
+ APP_PROJECT_PATH := ./
+ APP_MODULES := libupdate
+Index: tdclient/libs/updatelib/project/linux/libupdate/Makefile
+===================================================================
+--- tdclient/libs/updatelib/project/linux/libupdate/Makefile	(revision 14850)
++++ tdclient/libs/updatelib/project/linux/libupdate/Makefile	(working copy)
+@@ -32,7 +32,7 @@
+ 	-I$(SOURCE_ROOT_DIR)/3rd-party/soap/include \
+     -I$(BOOST_HOME)
+ 
+-CXXFLAGS += -std=c++11
++CXXFLAGS += -std=c++0x
+ 	
+ ifneq ($(DEBUG), )
+ CXXFLAGS        += -g
+Index: tdclient/linux/tdagent/Makefile.am
+===================================================================
+--- tdclient/linux/tdagent/Makefile.am	(revision 14850)
++++ tdclient/linux/tdagent/Makefile.am	(working copy)
+@@ -45,7 +45,7 @@
+         -DBOOST_FILESYSTEM_VERSION=2 \
+         -DTD_AGENT \
+         -DHAVE_CONFIG_H \
+-        -std=c++11 \
++        -std=c++0x \
+         #-DDEBUG_IPC_ONLY
+ 
+ 
+Index: tdclient/linux/tdagenttest/Makefile.am
+===================================================================
+--- tdclient/linux/tdagenttest/Makefile.am	(revision 14850)
++++ tdclient/linux/tdagenttest/Makefile.am	(working copy)
+@@ -45,7 +45,7 @@
+         -DBOOST_FILESYSTEM_VERSION=2 \
+         -DTD_AGENT \
+         -DHAVE_CONFIG_H \
+-        -std=c++11 \
++        -std=c++0x \
+         #-DDEBUG_IPC_ONLY
+ 
+ 
