@@ -5,5 +5,5 @@ ADD https://nchc.dl.sourceforge.net/project/boost/boost/1.49.0/boost_1_49_0.tar.
 RUN git clone https://github.com/openssl/openssl.git /opt/openssl
 COPY build.sh /opt/
 COPY 30proxy /etc/apt/apt.conf.d/30proxy
-COPY g++_std.patch /opt/
+#COPY g++_std.patch /opt/
 RUN tar xf /opt/boost_1_49_0.tar.bz2 -C /opt/ && rm -f /opt/boost_1_49_0.tar.bz2
