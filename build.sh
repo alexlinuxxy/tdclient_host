@@ -18,7 +18,8 @@ export BOOST_HOME=$BOOST_DIR
 export LIBRARY_PATH=$OPENSSL_DIR
 mkdir -p $TD_CLI_SRC_DIR
 rm -rf $TD_CLI_SRC_DIR/*
-cd $TD_CLI_SRC_DIR && svn checkout https://sh-ssvn.sh.intel.com/empg_repos/svn_td/td/trunk/tdclient --username huangshx && patch -p0 < /opt/g++_std.patch
+cd $TD_CLI_SRC_DIR && svn checkout https://sh-ssvn.sh.intel.com/empg_repos/svn_td/td/trunk/tdclient --username huangshx
+cd $TD_CLI_SRC_DIR/tdclient/tdclient/ && patch -p1 < /opt/g++_std.patch
 cd $TD_CLI_SRC_DIR/tdclient/tdclient/libs/ && chmod +x build.ubuntu.sh && ./build.ubuntu.sh
 cd $TD_CLI_SRC_DIR/tdclient/tdclient/linux/ && chmod +x build.ubuntu.sh && ./build.ubuntu.sh
 
