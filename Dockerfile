@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER "nikshuang@163.com"
 RUN apt-get update && apt-get install git vim make autoconf automake gcc g++ subversion zlib1g-dev libtool -y
 ADD https://nchc.dl.sourceforge.net/project/boost/boost/1.49.0/boost_1_49_0.tar.bz2 /opt/
