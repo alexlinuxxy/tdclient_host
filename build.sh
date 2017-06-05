@@ -7,11 +7,15 @@ BOOST_DIR=/opt/$BOOST
 OPENSSL_DIR=/opt/$OPENSSL
 TD_CLI_SRC_DIR=/mnt/tdclient/$TARGET
 CPUCORES=$((`cat /proc/cpuinfo | grep processor | wc -l` * 2))
+
+# boost & openssl
+cd $BOOST_DIR && patch -p1 </opt/boost_thread.patch && ./bootstrap.sh --with-libraries="thread,system,serialization,regex,filesystem" && ./b2 -j$CPUCORES
+ln -s $BOOST_DIR/stage/lib $BOOST_DIR/stage/lib/debian
+cd $OPENSSL_DIR && git checkout OpenSSL_1_0_1c && ./config && make -j$CPUCORES
+
+# td
 export BOOST_HOME=$BOOST_DIR
 export LIBRARY_PATH=$OPENSSL_DIR
-
-ln -s $BOOST_DIR/stage/lib $BOOST_DIR/stage/lib/debian
-
 mkdir -p $TD_CLI_SRC_DIR
 rm -rf $TD_CLI_SRC_DIR/*
 cd $TD_CLI_SRC_DIR && svn checkout https://sh-ssvn.sh.intel.com/empg_repos/svn_td/td/trunk/tdclient --username huangshx && patch -p0 < /opt/g++_std.patch
