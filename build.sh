@@ -9,7 +9,7 @@ TD_CLI_SRC_DIR=/mnt/tdclient/$TARGET
 CPUCORES=$((`cat /proc/cpuinfo | grep processor | wc -l` * 2))
 
 # boost & openssl
-cd $BOOST_DIR && patch -p1 </opt/boost_thread.patch && ./bootstrap.sh --with-libraries="thread,system,serialization,regex,filesystem" && ./b2 -j$CPUCORES
+cd $BOOST_DIR && ./bootstrap.sh --with-libraries="thread,system,serialization,regex,filesystem" && ./b2 -j$CPUCORES
 ln -s $BOOST_DIR/stage/lib $BOOST_DIR/stage/lib/debian
 cd $OPENSSL_DIR && git checkout OpenSSL_1_0_1c && ./config && make -j$CPUCORES
 
@@ -20,7 +20,5 @@ mkdir -p $TD_CLI_SRC_DIR
 rm -rf $TD_CLI_SRC_DIR/*
 cd $TD_CLI_SRC_DIR && svn checkout https://sh-ssvn.sh.intel.com/empg_repos/svn_td/td/trunk/tdclient --username huangshx
 cd $TD_CLI_SRC_DIR/tdclient/tdclient/ && patch -p1 < /opt/g++_std.patch
-cd $TD_CLI_SRC_DIR/tdclient/tdclient/libs/ && chmod +x build.ubuntu.sh && ./build.ubuntu.sh
-cd $TD_CLI_SRC_DIR/tdclient/tdclient/linux/ && chmod +x build.ubuntu.sh && ./build.ubuntu.sh
-
-bash
+cd $TD_CLI_SRC_DIR/tdclient/tdclient/libs/ && chmod +x build.ubuntu.sh && sed -i "s/BOOST_HOME=\(.*\)make$/BOOST_HOME=\1make -j$CPUCORES/g" build.ubuntu.sh && ./build.ubuntu.sh
+cd $TD_CLI_SRC_DIR/tdclient/tdclient/linux/ && chmod +x build.ubuntu.sh && sed -i "s/BOOST_HOME=\(.*\)make$/BOOST_HOME=\1make -j$CPUCORES/g" build.ubuntu.sh && ./build.ubuntu.sh
