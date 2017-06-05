@@ -1,18 +1,16 @@
 #!/bin/bash
 
-BOOST=boost-1_49_0
 OPENSSL=openssl
+BOOST=boost_1_49_0
+TARGET=ubuntu-12.04
 BOOST_DIR=/opt/$BOOST
 OPENSSL_DIR=/opt/$OPENSSL
-TD_CLI_SRC_DIR=/mnt/tdclient/ubuntu-12.04
+TD_CLI_SRC_DIR=/mnt/tdclient/$TARGET
 CPUCORES=$((`cat /proc/cpuinfo | grep processor | wc -l` * 2))
 export BOOST_HOME=$BOOST_DIR
 export LIBRARY_PATH=$OPENSSL_DIR
 
-find $BOOST_DIR -name *.sh | xargs -I{} chmod +x {}
-cd $BOOST_DIR && ./bootstrap.sh && ./b2 -j$CPUCORES
 ln -s $BOOST_DIR/stage/lib $BOOST_DIR/stage/lib/debian
-cd $OPENSSL_DIR && git checkout OpenSSL_1_0_1c && ./config && make -j$CPUCORES
 
 mkdir -p $TD_CLI_SRC_DIR
 rm -rf $TD_CLI_SRC_DIR/*
