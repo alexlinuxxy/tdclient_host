@@ -11,7 +11,7 @@ TD_CLI_RELEASE_DIR=$TD_CLI_SRC_DIR/lib/release/tdclient_deb
 CPUCORES=$((`cat /proc/cpuinfo | grep processor | wc -l` * 2))
 
 # boost & openssl
-cd $BOOST_DIR && ./bootstrap.sh --with-libraries="thread,system,serialization,regex,filesystem" && ./b2 -j$CPUCORES
+cd $BOOST_DIR && patch -p1 </opt/xtime.patch && ./bootstrap.sh --with-libraries="thread,system,serialization,regex,filesystem" && ./b2 -j$CPUCORES
 ln -s $BOOST_DIR/stage/lib $BOOST_DIR/stage/lib/debian
 cd $OPENSSL_DIR && git checkout OpenSSL_1_0_1c && ./config && make -j$CPUCORES
 
