@@ -1,0 +1,14 @@
+Index: libs/tddllib/cmpc/td/download/TaskController.h
+===================================================================
+--- libs/tddllib/cmpc/td/download/TaskController.h	(revision 14851)
++++ libs/tddllib/cmpc/td/download/TaskController.h	(working copy)
+@@ -18,8 +18,8 @@
+ #include <boost/thread.hpp>
+ #include <boost/thread/condition.hpp>
+ #include <boost/shared_ptr.hpp>
++#include <stdint.h>
+ 
+-
+ namespace cmpc { namespace td { namespace smart_update {
+ 
+ #define MAX_MCB_NUMBER 16
