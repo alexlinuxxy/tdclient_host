@@ -5,7 +5,7 @@ set -e
 OUT_DIR=/mnt
 OPENSSL=openssl
 BOOST=boost_1_49_0
-TARGET=ubuntu-14.04
+TARGET=debian-9.1
 BOOST_DIR=/opt/$BOOST
 OPENSSL_DIR=/opt/$OPENSSL
 TD_CLI_SRC_DIR=/mnt/tdclient/$TARGET
